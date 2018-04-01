@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Acumin Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Acumin Pro'), url('../font/Acumin-RPro.woff') format('woff');
+}
+
+.toggle-hover:hover{
+    text-decoration: underline;
+}
