@@ -6,6 +6,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: $bg-color;
+    overflow-x: hidden;
     font-family: 'Acumin Pro';
 }
 hr{
@@ -19,8 +20,8 @@ hr{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    margin: 30px auto;
 }
 .card{
     width: 40%;
@@ -31,11 +32,17 @@ hr{
     background-color: #fff;
 }
 .card-image{
+    background-color: #000;
     display: block;
+    border-radius: 6px 6px 0px 0px;
     img{
+        transition: opacity 0.25s linear;
         border-radius: 6px 6px 0px 0px;
         display: block;
         width: 100%;
+    }
+    img:hover{
+        opacity: 0.7;
     }
 }
 .card-details {
@@ -53,9 +60,6 @@ hr{
     .details-title{
         height: 34px;
         padding-top: 9px;
-    }
-    .details-own{
-
     }
     .details-sm-separator{
         width: 10px;
@@ -87,6 +91,65 @@ hr{
             .stats-icons{
                 margin: 0;
             }
+            .feature-tooltip::before {
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                content: '';
+                position: absolute;
+                border-bottom: calc(6px + 2px) solid #fff;
+                border-top: 0;
+                bottom: auto;
+                filter: drop-shadow(0 -2px 1px rgba(25,25,25,.2));
+                top: -7px;
+                transform: translateX(-50%);
+                left: 50%;
+                right: auto;
+            }
+            .feature-tooltip{
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                border-radius: 3px;
+                box-shadow: 0 2px 8px rgba(25,25,25,0.3);
+                opacity: 0;
+                visibility: hidden;
+                padding: 10px;
+                position: absolute;
+                text-align: center;
+                transition: opacity .25s linear, visibility .25s linear;
+                width: 165px;
+                background-color: #fff;
+                font-weight: lighter;
+                top: 200%;
+                .feature-tooltip-content{
+                    b{
+                        color: $tertiary-color;
+                    }
+                }
+            }
         }
+        .stat-feature:hover .feature-tooltip{
+            opacity: 1;
+            visibility: visible
+        }
+    }
+}
+// Tab RWD
+@media (min-width:720px) {
+    .main{
+        width: 90%;
+    }
+    .card{
+        width: 30%;
+    }
+}
+// Desktop RWD
+@media (min-width:1080px) {
+    .main{
+        margin: 10px auto;
+    }
+    .card{
+        margin: 10px 0;
+        width: 15%;
     }
 }
